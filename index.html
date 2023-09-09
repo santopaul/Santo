@@ -4,6 +4,7 @@
 <head>
 	<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKPGZ19MEC"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -348,7 +349,7 @@
 		<section class="contact" id="contact">
 			<div class="inner-sec">
 				<h3 class="heading text-capitalize mb-4">Get In Touch <span></span></h3>
-				<form name="contact-form" class="contact-form" method="post" action="#">
+				<form name="contact-form" class="contact-form" id="submit-form" action="">
 					<div class="row">
 						<div class="col-md-6 con-gd">
 							<div class="form-group">
@@ -524,6 +525,26 @@ $(document).ready(function() {
   $(absoluteSide).css("position", "absolute");
 });
    </script>
-	<chat-bot platform_id="2f736ffa-1651-4ee1-8221-fd8671a89752" user_id="92ad86d4-b9c6-4e40-8242-84227da7e528" chatbot_id="75235313-948d-4ab9-859e-b8b2d1d4e4fe"><a href="https://www.chatsimple.ai/?utm_source=widget&utm_medium=referral">[chatbot]</a></chat-bot><script src="https://chatsimple-widget.s3.us-east-2.amazonaws.com/chat-bot-loader.js" defer></script>
+	<chat-bot platform_id="2f736ffa-1651-4ee1-8221-fd8671a89752" user_id="92ad86d4-b9c6-4e40-8242-84227da7e528" chatbot_id="75235313-948d-4ab9-859e-b8b2d1d4e4fe"><a href="https://www.chatsimple.ai/?utm_source=widget&utm_medium=referral">[chatbot]</a></chat-bot><script src="https://chatsimple-widget.s3.us-east-2.amazonaws.com/chat-bot-loader.js" defer>	
+   </script>
+   <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbzbxprJ3TuRv-WWQKwZKbnXRNOS2yUj8BWqJ4eUpgQ96NF1iKpS4-6fNwi6RAVEPKabcg/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 </html>
